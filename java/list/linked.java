@@ -1,5 +1,15 @@
 package data_structures_and_algorithms.java.list;
 
+
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+    }
+}
+
+
 public class linked implements Innerlist {
     public static void main(String[] args) {
         
