@@ -55,3 +55,18 @@ public class MyArrayList implements Innerlist{
         }
     }
 }
+
+
+public class UOListDemoApp {
+    public static void main(String[] args) {
+        MyList L = new MyArrayList(); 
+        L.Insert ("musa"); 
+        L.Insert ("Lucky"); 
+        L.Insert ("jane"); 
+        L.ShowData (); 
+        L.Delete("Lucky"); 
+        L.ShowData (); 
+        L.Delete ("musa"); 
+        L.ShowData (); 
+    }
+}
