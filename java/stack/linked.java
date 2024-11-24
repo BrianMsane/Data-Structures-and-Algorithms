@@ -37,6 +37,9 @@ public class linkedStack<T> implements MyStack<T> {
         }
         System.out.println();
     }
+    public T Top(){
+        return this.head.data;
+    }
 }
 
 

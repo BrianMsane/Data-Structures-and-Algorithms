@@ -47,14 +47,16 @@ public class linkedList<T> implements Innerlist<T> {
         Node current = this.head;
         Node prevNode = null;
 
-        while((current != null) && (current.data != e)){
+        while(current != null){
             prevNode = current;
             current = current.next;
-            if ((current != null) && (current.data == e)){
-                if (prevNode == null)
+
+            if (current.data == e) {
+                if (prevNode == null){
                     head = current.next;
-                else
+                } else {
                     prevNode.next = current.next;
+                }
             }
         }
     }
