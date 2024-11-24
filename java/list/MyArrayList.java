@@ -1,32 +1,33 @@
 package data_structures_and_algorithms.java.list;
 
-public class MyArrayList implements Innerlist{
+public class MyArrayList<T> implements Innerlist{
     static int maxSize = 15;
     private int size;
-    private String[] Item;
+    private T[] Item;
 
+    // constructor -> initializes a new List instance with an empty array
     public MyArrayList (){
         this.size=0;
         this.Item = new String[maxSize];
     }
-    
-    public boolean isFull(){
-        return this.size == maxSize;
+    public MyArrayList (int capacity){
+        this.size=0;
+        this.Item = new String[capacity];
     }
 
+    public boolean isFull(){return this.size == maxSize;}
+
     private void swap(int i, int j){
-        String temp = this.Item[i];
+        T temp = this.Item[i];
         this.Item[i] = this.Item[j];
         this.Item[j] = temp;
     }
 
     @Override
-    public boolean isEmpty() {
-        return this.size == 0;
-    }
+    public boolean isEmpty() {return this.size == 0;}
 
     @Override
-    public void Insert(String e) {
+    public void Insert(T e) {
         if (!(this.isFull())){
             this.Item[this.size] = e;
             this.size++;
@@ -34,7 +35,7 @@ public class MyArrayList implements Innerlist{
     }
 
     @Override
-    public void Delete(String e) {
+    public void Delete(T e) {
         int index=0;
         if (!(this.isEmpty())){
             while (index < this.size && this.Item[index] != e){
@@ -46,7 +47,7 @@ public class MyArrayList implements Innerlist{
             }
         }
     }
-    
+
     @Override
     public void showData() {
         for (int index =0; index < this.size; index++){
@@ -59,7 +60,7 @@ public class MyArrayList implements Innerlist{
 
 public class UOListDemoApp {
     public static void main(String[] args) {
-        MyList L = new MyArrayList(); 
+        L <String> = new MyArrayList(); 
         L.Insert ("musa"); 
         L.Insert ("Lucky"); 
         L.Insert ("jane"); 

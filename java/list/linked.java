@@ -1,45 +1,96 @@
 package data_structures_and_algorithms.java.list;
 
 
-class Node{
-    int data;
+public class Node<T> {
+    T data;
     Node next;
-    Node(int data){
+
+    // constructor overloading
+    public Node(){}
+    public Node(T data, Node next){
         this.data = data;
+        this.next = next;
+    }
+    public Node(T data){
+        this.data = data;
+        this.next = null;
     }
 }
 
 
 public class linkedList<T> implements Innerlist<T> {
-    public static void main(String[] args) {
-        
+
+    public void MyArrayList(){
+        // constructor initializes the head to null
+        this.head = null;
     }
-
-    public MyArrayList(){head = null;}
-
 
     @Override
     public boolean isEmpty() {
-        return (head == null); // when the head still points to nothing, it is empty
+        // when the head still points to nothing, it is empty
+        return (this.head == null);
     }
 
     public boolean isFull(){
-        return false; // never gets full, theoritically
+        // never gets full, theoretically
+        return false;
     }
 
     @Override
     public void Insert(T e) {
-        Node<T> NewNode = new Node (e, head);
-        head = NewNode;
+        Node<T> NewNode = new Node(e, this.head);
+        this.head = NewNode;
     }
 
     @Override
     public void Delete(T e) {
-        return;
+        Node current = this.head;
+        Node prevNode = null;
+
+        while((current != null) && (current.data != e)){
+            prevNode = current;
+            current = current.next;
+            if ((current != null) && (current.data == e)){
+                if (prevNode == null)
+                    head = current.next;
+                else
+                    prevNode.next = current.next;
+            }
+        }
     }
 
     @Override
     public void showData() {
-        return;
+        Node currNode = this.head;
+        while (currNode != null){
+            System.out.println("\t"+ currNode.data);
+            currNode = currNode.next;
+        }
+        System.out.println();
+    }
+
+    public int length(){
+        head = this.head;
+        current = head;
+
+        // linked list traversal
+        int count = 0;
+        while (current != null){
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+}
+
+public class UOListDemoApp { 
+    public static void main(String[] args) { 
+        MyList<String> L = new linkedList();
+        L.Insert("musa");
+        L.Insert ("Lucky");
+        L.Insert("jane"); 
+        L.ShowData (); 
+        L.Delete("Lucky");L.ShowData (); 
+        L.Delete ("musa");L.ShowData ();
     }
 }
