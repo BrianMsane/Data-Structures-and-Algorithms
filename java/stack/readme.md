@@ -1,0 +1,3 @@
+
+<h1>Stack Data Structure</h1>
+A stack is a list of homogenous, of the same type, elements in which the addition and deletion of elements only occurs at one end called the top of the stack. To drive this near home, we can make an example of a stack of books. In a stack of books you only have access to the top; that means if you want to take a book you remove the one at the top until you get to the desired one. Also, you only add by putting the book at the top of the stack.
