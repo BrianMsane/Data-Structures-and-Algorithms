@@ -6,5 +6,5 @@ public interface MyQueue {
     void enqueue(int e);
     int dequeue();
     int showData();
-    int front();    
+    int queueFront();    
 }

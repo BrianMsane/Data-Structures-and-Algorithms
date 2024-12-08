@@ -9,10 +9,10 @@ public class arrayQueue<T> implements MyQueue<T> {
 
     void arrayQueue(){
         this.size = 0;
-        this.Item[maxSize];
+        this.Item = new T[maxSize];
     }
     public isEmpty(){return ((this.size == 0) && (frontIndex == 0));}
-    public isFull(){return this.size == this.maxSize;}
+    public isFull(){return (this.size == this.maxSize);}
     public void enqueue(T e){
         if (!(this.isFull()))
             this.Item[this.size] = e;
@@ -25,8 +25,8 @@ public class arrayQueue<T> implements MyQueue<T> {
             this.size--;
         }
     }
-    public T front(){
+    public T queueFront(){
         if !(this.isEmpty())
-            return this.Item[frontIndex]
+            return this.Item[frontIndex];
     }
 }
