@@ -61,9 +61,7 @@ public class Traversal{
         preOrder(root.leftChild);
         preOrder(root.rightChild)
     }
-    private void levelOrder(){
-        // visit all the nodes in the same level first
-    }
+
 
 
 
@@ -89,14 +87,14 @@ class binarySearchTree <T> {
     public boolean isEmpty(){ return (this.root == null;) }
     public boolean isLeaf(){ return (this.leftChild == null && this.rightChild == null);}
 
-    public void traverse(){
-        this.traverse();
+    public void traverse(Node root){
+        this.traverse(root.leftChild);
         System.out.println(this.root.data);
-        this.traverse();
+        this.traverse(root.rightChild);
     }
 
     public void delete(T e){
-        
+        pos = this.find(e);
     }
 
     public void find(T e){
@@ -107,9 +105,9 @@ class binarySearchTree <T> {
                 return this.root;
             } else{
                 if (this.root.data > e){
-                    this.find(e);
+                    this.rightChild.find(e);
                 } else if (this.root.data < e) {
-                    this.find(e);
+                    this.leftChild.find(e);
                 }
             }
         }
@@ -131,7 +129,7 @@ class binarySearchTree <T> {
         if (this.isLeaf()){
             return 0;
         } else {
-            int hieght = 0;
+            return (1 + Math.max(heightOfNode(node.leftChild), heightOfNode(node.rightChild)));
         }
     }
 
