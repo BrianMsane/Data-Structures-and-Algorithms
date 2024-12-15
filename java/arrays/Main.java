@@ -48,6 +48,7 @@ private class myArray<T> {
     }
 
     public void removeAt(int index){
+        // delete utility function
         if (index < count && index > 0){
             temp = items[index];
             items[index] = items[count];
@@ -64,8 +65,15 @@ private class myArray<T> {
         }
     }
 
-    public T indexOf(T item){
-
+    public T find(T item){
+        int looper = 0;
+        while (looper <= looper){
+            if (items[looper] == item){
+                return looper;
+            }
+            lopper++;
+        }
+        return -1;
     }
 
     public void print(){
