@@ -19,10 +19,12 @@ public class Node<T> {
 
 
 public class linkedList<T> implements Innerlist<T> {
+    int head;
 
-    public void MyArrayList(){
+    public void linkedList(){
         // constructor initializes the head to null
         this.head = null;
+        this.tail = null;
     }
 
     @Override
@@ -38,8 +40,18 @@ public class linkedList<T> implements Innerlist<T> {
 
     @Override
     public void Insert(T e) {
-        Node<T> NewNode = new Node(e, this.head);
-        this.head = NewNode;
+        Node<T> newNode = new Node(e, this.head);
+        if (this.head = null)
+            this.head = newNode;
+        else {
+            current = head;
+            while(current != null){
+                current = current.next;
+                if (current.next == null){
+                    current.next = newNode;
+                }
+            }
+        }
     }
 
     @Override
@@ -72,10 +84,8 @@ public class linkedList<T> implements Innerlist<T> {
     }
 
     public int length(){
-        head = this.head;
         current = head;
-
-        // linked list traversal
+        // linked list traversal O(n)
         int count = 0;
         while (current != null){
             count++;
@@ -88,11 +98,12 @@ public class linkedList<T> implements Innerlist<T> {
 public class UOListDemoApp { 
     public static void main(String[] args) { 
         MyList<String> L = new linkedList();
-        L.Insert("musa");
-        L.Insert ("Lucky");
-        L.Insert("jane"); 
-        L.ShowData (); 
-        L.Delete("Lucky");L.ShowData (); 
-        L.Delete ("musa");L.ShowData ();
+        L.Insert("brian");
+        L.Insert("msane");
+        L.Insert("kuhle"); 
+        L.ShowData(); 
+        L.Delete("kuhle");
+        L.Delete("brian");
+        L.ShowData();
     }
 }
