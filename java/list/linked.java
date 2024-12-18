@@ -1,23 +1,23 @@
 package data_structures_and_algorithms.java.list;
 
 
-public class Node<T> {
-    T data;
-    Node next;
-
-    // constructor overloading
-    public Node(T data, Node next){
-        this.data = data;
-        this.next = next;
-    }
-    public Node(T data){
-        this.data = data;
-        this.next = null;
-    }
-}
-
-
 public class linkedList<T> implements Innerlist<T> {
+
+    public class Node<T> { // to get access to private attributes, it should be inside the class of interest
+        private T data;
+        private Node next;
+
+        // constructor overloading
+        public Node(T data, Node next){
+            this.data = data;
+            this.next = next;
+        }
+        public Node(T data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
     private Node head;
     private Node last;
 
