@@ -1,7 +1,7 @@
 package data_structures_and_algorithms.java.list;
 
 public class MyArrayList<T> implements Innerlist{
-    static int maxSize = 15;
+    private int maxSize = 15;
     private int size;
     private T[] Item;
 
@@ -11,6 +11,7 @@ public class MyArrayList<T> implements Innerlist{
         this.Item = new T[maxSize];
     }
     public MyArrayList (int capacity){
+        this.maxSize = capacity;
         this.size = 0;
         this.Item = new T[capacity];
     }
@@ -59,7 +60,7 @@ public class MyArrayList<T> implements Innerlist{
 
 public class UOListDemoApp {
     public static void main(String[] args) {
-        L <String> = new MyArrayList(); 
+        MyArrayList L<String> = new MyArrayList(); 
         L.Insert ("musa"); 
         L.Insert ("Lucky"); 
         L.Insert ("jane"); 
