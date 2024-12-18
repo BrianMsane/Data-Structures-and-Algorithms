@@ -1,30 +1,30 @@
 package data_structures_and_algorithms.java.list;
 
 public class MyArrayList<T> implements Innerlist{
-    static int maxSize = 15;
+    private int maxSize = 15;
     private int size;
     private T[] Item;
 
-    // constructor -> initializes a new List instance with an empty array
+    // constructor overloading
     public MyArrayList (){
-        this.size=0;
-        this.Item = new String[maxSize];
+        this.size = 0;
+        this.Item = new T[maxSize];
     }
     public MyArrayList (int capacity){
-        this.size=0;
-        this.Item = new String[capacity];
+        this.maxSize = capacity;
+        this.size = 0;
+        this.Item = new T[capacity];
     }
 
+
     public boolean isFull(){return this.size == maxSize;}
+    public boolean isEmpty() {return this.size == 0;}
 
     private void swap(int i, int j){
         T temp = this.Item[i];
         this.Item[i] = this.Item[j];
         this.Item[j] = temp;
     }
-
-    @Override
-    public boolean isEmpty() {return this.size == 0;}
 
     @Override
     public void Insert(T e) {
@@ -60,7 +60,7 @@ public class MyArrayList<T> implements Innerlist{
 
 public class UOListDemoApp {
     public static void main(String[] args) {
-        L <String> = new MyArrayList(); 
+        MyArrayList L<String> = new MyArrayList(); 
         L.Insert ("musa"); 
         L.Insert ("Lucky"); 
         L.Insert ("jane"); 
