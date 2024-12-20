@@ -2,11 +2,9 @@ package data_structures_and_algorithms.java.sort;
 
 public class Search {
     public static void main(String[] args) {
-        int nums[] = {2,3,5,6,7,8,99};
+        int nums[] = {2,3,5,6,7,8,99}; // ordered list
         int target = 8;
-        int result = linearSearch(nums, target);
-        int result1 = binarySearch(nums, target);
-        if (result == result1)
+        if (linearSearch(nums, target) == binarySearch(nums, target))
             System.out.println(result);
         else
             System.out.println("There is some discrepancy!");
@@ -20,12 +18,11 @@ public class Search {
             int mid = (left + right) / 2;
             if (nums[mid] == target){
                 return mid;
-            }
-            else if (nums[mid] < target){
+            } else if (nums[mid] < target){
                 left = mid + 1;
-            }
-            else
+            } else {
                 right = mid -1;
+            }
         }
         return -1;
     }

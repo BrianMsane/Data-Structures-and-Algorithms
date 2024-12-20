@@ -26,7 +26,12 @@ public class MyArrayList<T> implements Innerlist{
         this.Item[j] = temp;
     }
 
-    @Override
+    public void addFirst(T e){
+        current = this.Item[0];
+        this.Item[0] = e;
+        Insert(current);
+    }
+
     public void Insert(T e) {
         if (!(this.isFull())){
             this.Item[this.size] = e;
@@ -34,7 +39,6 @@ public class MyArrayList<T> implements Innerlist{
         }
     }
 
-    @Override
     public void Delete(T e) {
         int index=0;
         if (!(this.isEmpty())){
@@ -48,7 +52,6 @@ public class MyArrayList<T> implements Innerlist{
         }
     }
 
-    @Override
     public void showData() {
         for (int index =0; index < this.size; index++){
             System.out.println('\t' + this.Item[index]);
@@ -69,5 +72,13 @@ public class UOListDemoApp {
         L.ShowData (); 
         L.Delete ("musa"); 
         L.ShowData (); 
+
+        var list = new MyArrayList(); // let java detect the type, and we can store any data type
+        list.Insert(8);
+        list.Insert("Bruno Fenarndes");
+        if list.isEmpty()
+            list.Insert("Maguire");
+        list.delete(8);
+        list.showData();
     }
 }
