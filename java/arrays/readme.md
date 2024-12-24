@@ -65,10 +65,14 @@
 <p>
   For two-dimensional arrays the AMF can either assume row-major order or
   column-major order. When we use row-major order we allocate memory row by row
-  and column-major order uses column-by-column to allocate memory. Assuming row-major
-order, the AMF can be expressed as follows. <br><br>
-<strong>Addr(A[i, j]) = b + (i - lo <sub>1</sub>)(hi <sub>2</sub> - lo <sub>2</sub> + 1) * E.size + (j - lo <sub>2</sub>) * E.size</strong> <br>
- 
-On the contrary, assuming column-major order, the AMF can be expresses as follows. <br />
+  and column-major order uses column-by-column to allocate memory. Assuming
+  row-major order, the AMF can be expressed as follows. <br /><br />
+  <strong
+    >Addr(A[i, j]) = b + (i - lo <sub>1</sub>)(hi <sub>2</sub> - lo
+    <sub>2</sub> + 1) * E.size + (j - lo <sub>2</sub>) * E.size</strong
+  >
+  <br />
 
+On the contrary, assuming column-major order, the AMF can be expresses as
+follows. <br />
 </p>
