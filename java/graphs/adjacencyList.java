@@ -22,4 +22,54 @@ public class adjacencyList<T> implements mygraph<T>{
     public static void main(String[] args) {
         System.out.println("Yeah we in it again");
     }
+
+    @Override
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    }
+
+    @Override
+    public boolean isFull() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isFull'");
+    }
+
+    @Override
+    public boolean isMember() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isMember'");
+    }
+
+    @Override
+    public boolean isAdjacent() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isAdjacent'");
+    }
+
+    @Override
+    public void neighbours() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'neighbours'");
+    }
+
+    @Override
+    public void addEdge(T u, T v) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addEdge'");
+    }
+
+    @Override
+    public void removeEdge(T u, T v) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeEdge'");
+    }
+
+    @Override
+    public void showGraph() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'showGraph'");
+    }
+    this.node = this.node;
+    
 }
