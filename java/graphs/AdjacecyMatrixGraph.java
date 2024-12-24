@@ -1,6 +1,7 @@
-public class AdjacecyMatrixGraph<T> implements myGraph<T> {
+public class AdjacecyMatrixGraph<Integer> implements mygraph<T> {
     private final int size;
     private int [][] adjacencyMatrix;
+
     public AdjacecyMatrixGraph(int v){
         size = v;
         adjacencyMatrix = new int [size + 1][size + 1];
@@ -9,6 +10,7 @@ public class AdjacecyMatrixGraph<T> implements myGraph<T> {
     public int getSize(){ return this.size; }
     public int[][] getMatrix(){ return this.adjacencyMatrix; }
     public boolean isEmpty(){ return (this.size == 0); }
+
     public boolean isMember(T u) { return ((u >= 0 ) && (u <= size)); }
     public boolean isAdjacent(T u, T v){
         boolean found = false;
@@ -19,6 +21,7 @@ public class AdjacecyMatrixGraph<T> implements myGraph<T> {
         }
         return found;
     }
+
     public void addEdge(T from, T to){
         try{
             adjacencyMatrix[from][to] = 1;
@@ -26,19 +29,22 @@ public class AdjacecyMatrixGraph<T> implements myGraph<T> {
             System.out.println("The nodes to add an edge to does not exist");
         }
     }
-    public void getEdge(T from, T to){
+
+    public T getEdge(T from, T to){
         try{
-            return adjacencyMatrix[from][to];
-        }catch(ArrayIndexOutOfBoundsExeption index){
-            System.out.println("The vertices does not exist")
-            return;
+            return this.adjacencyMatrix[from][to];
+        } catch(ArrayIndexOutOfBoundsExeption index){
+            System.out.println("The vertices does not exist");
+            return -1;
         }
     }
+
     public void removeEdge(T from, T to){
         if((this.isMember(from)) && (this.isMember(to))){
             adjacencyMatrix[from][to] = 0;
         }
     }
+
     public void showGraph(){
         System.out.println("\t");
         for(int i =1; i < this.size; i++)
@@ -52,5 +58,29 @@ public class AdjacecyMatrixGraph<T> implements myGraph<T> {
             System.out.println();
             }
         }
+    }
+
+    @Override
+    public boolean isFull() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isFull'");
+    }
+
+    @Override
+    public boolean isMember() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isMember'");
+    }
+
+    @Override
+    public boolean isAdjacent() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isAdjacent'");
+    }
+
+    @Override
+    public void neighbours() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'neighbours'");
     }
 }

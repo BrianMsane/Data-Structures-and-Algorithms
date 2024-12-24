@@ -16,11 +16,9 @@ Operations
 
 public class Main{
     public static void main(String[] args){
-        int size = 7;
-        int[] numbers = new int[size]; // all items initialized to 0
-        numbers[0], numbers[1] = 8, 9;
-        int secondNumbers = {1, 2, 3, 4};
-        System.out.println(Arrays.toString(numbers));
+        var array = new myArray<Integer>(9);
+        array.insert(8);
+        array.Traverse();
     }
 }
 
@@ -37,15 +35,15 @@ private class myArray<T> {
     public void insert(T e){
         // if the array is full, make a new one and then insert the values of the previous one
         // insert the new value at the end of the new list
-        if (isFull()){
+        if (this.isFull()){
            int[] newItems = new int[count * 2];
            for (int i=0; i < count; i++){
-                newItems[i] = items[i];
+                newItems[i] = this.items[i];
            }
-           items = newItems;
-           items[count] = e;
+           this.items = newItems;
+           this.items[count++] = e;
         } else {
-            items[count++] = e; // post-increment
+            this.items[count++] = e; // post-increment
         }
     }
 
@@ -123,7 +121,7 @@ private class myArray<T> {
         return -1;
     }
 
-    public void print(){
+    public void Traverse(){
         for (int i=0; i < count; i++){
             System.out.println(items[i]);
         }
