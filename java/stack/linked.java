@@ -2,8 +2,8 @@ package data_structures_and_algorithms.java.stack;
 
 
 public class Node<T> {
-    T data;
-    Node next;
+    private T data;
+    private Node next;
 
     // constructor overloading
     public Node(){}
@@ -17,35 +17,49 @@ public class Node<T> {
     }
 }
 
-public class linkedStack<T> implements MyStack<T> {
+public class myLinkedStack<T> implements MyStack<T> {
     
     public linkedStack(){top = null;}
     public boolean isEmpty(return top == null;)
-    public boolean isFull(return false;)
+    public boolean isFull(return false;) // never full, theoretically
+
     public void Push(T e){
-        Node<T> newNode = new Node(e, top);
-        top = newNode;
+        Node newNode<T> = new Node(e);
+        if(isEmpty()){
+            top = newNode;
+        } else {
+            newNode = top;
+            top = newNode;
+        }
     }
+
     public void Pop(){
         if (!(this.isEmpty()))
+            Node top = this.top;
             this.top = this.top.next;
+            return top;
     }
+
     public void showData(){
-        while (this.top != null){
-            System.out.println("\t" + this.top.data);
-            this.top = this.top.next;
+        if(!(isEmpty())){
+            current = this.top;
+            while (current != null){
+                System.out.println("\t" + current.data);
+                current = current.next;
+            }
+            System.out.println();
         }
-        System.out.println();
     }
     public T Top(){
-        return this.head.data;
+        if(!(isEmpty()))
+            return this.head.data;
     }
 }
 
 
 public class DemoApp{
     public static void main(){
-        MyStack<String> S = new MyArrayStack();
+        myLinkedStack S<String> = new myLinkedStack();
         S.Push("Bruno");
         S.Push("Garnarcho");
         S.Push("Maguire");
