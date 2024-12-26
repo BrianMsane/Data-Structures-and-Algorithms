@@ -50,65 +50,88 @@
   or function performed on the values.
 </p>
 
-<h2>
-  Internal and external data structures
-  </h2>
-  <p>
-    In computer science we have internal and external dada structures. Internal
-    data structures deal with how data is stored and processed in primary
-    memory, RAM. In contrast to this, external data structure are concerned with
-    how data is stored and retrieved in secondary memory like Solid State Drives
-    - SSDs.
-  </p>
+<h2>Internal and external data structures</h2>
+<p>
+  In computer science we have internal and external dada structures. Internal
+  data structures deal with how data is stored and processed in primary memory,
+  RAM. In contrast to this, external data structure are concerned with how data
+  is stored and retrieved in secondary memory like Solid State Drives - SSDs.
+</p>
 
 <h2>Difference: Data types and Data structures</h2>
-  <p>
-    It is important to note that there is a huge difference between data
-    structures and data types.
-  </p>
-  <h3>Data types</h3>
+<p>
+  It is important to note that there is a huge difference between data
+  structures and data types.
+</p>
+<h3>Data types</h3>
+<ul>
+  <li>Atomic data types</li>
   <ul>
-    <li>Atomic data types</li>
-    <ul>
-      <li>Character - char</li>
-      <li>Integer - int</li>
-      <li>Floating point numbers - float</li>
-      <li>double</li>
-    </ul>
-    <li>Derived data types</li>
-    <ul>
-      <li>String</li>
-      <li>Pointer</li>
-      <li>Array</li>
-      <li>Record or structs</li>
-      <li>enum</li>
-    </ul>
+    <li>Character - char</li>
+    <li>Integer - int</li>
+    <li>Floating point numbers - float</li>
+    <li>double</li>
   </ul>
+  <li>Derived data types</li>
+  <ul>
+    <li>String</li>
+    <li>Pointer</li>
+    <li>Array</li>
+    <li>Record or structs</li>
+    <li>enum</li>
+  </ul>
+</ul>
 
 <h3>Data structures</h3>
+<ul>
+  <li>Pre-defined data types</li>
   <ul>
-    <li>Pre-defined data types</li>
-    <ul>
-      <li>Array</li>
-      <li>Record</li>
-    </ul>
-    <li>User-defined data types</li>
-    <ul>
-      <li>List</li>
-      <li>Stack</li>
-      <li>Queue</li>
-      <li>Tree</li>
-      <li>Graph</li>
-    </ul>
+    <li>Array</li>
+    <li>Record</li>
   </ul>
+  <li>User-defined data types</li>
+  <ul>
+    <li>List</li>
+    <li>Stack</li>
+    <li>Queue</li>
+    <li>Tree</li>
+    <li>Graph</li>
+  </ul>
+</ul>
 
-  <p>
-    Note that lists, stacks, and queues are referred to as linear data
-    structures while trees and graphs are referred to as non-linear data
-    structures. The difference is that linear data structures have their
-    elements arranged in a sequential fashion and each element has a direct link
-    to its previous and/or next element. On the contrary, non-linear data
-    structures are not arranged in a sequential manner.
-  </p>
+<p>
+  Note that lists, stacks, and queues are referred to as linear data structures
+  while trees and graphs are referred to as non-linear data structures. The
+  difference is that linear data structures have their elements arranged in a
+  sequential fashion and each element has a direct link to its previous and/or
+  next element. On the contrary, non-linear data structures are not arranged in
+  a sequential manner.
+</p>
 
+<h2>Algorithm Analysis</h2>
+<p>
+  An algorithm is a step-by-step approach of solving a computational task. It is
+  a description of how to perform a specific computational task. When analyzing
+  algorithms, usually, the time and space complexities are used. Time complexity
+  refers to the amount of time required to perform a task. Space complexity
+  refers to the amount of memory space it requires to perform a specific
+  computational task. Note that the best algorithm for a task requires minial
+  space and optimal time to compute. Typically, worst-case time complexity is
+  used. This is the maximum amount of time taken on inputs of a given size. It
+  is generally expressed as a function of the size of inputs and the Big-Oh
+  notation is widely used. The common running times in as far as Big-Oh is
+  concerned are:
+</p>
+<ul>
+  <li>Constant time</li>
+  <li>Linear time</li>
+  <li>Logarithmic time</li>
+  <li>Quadratic time</li>
+  <li>Cubic time</li>
+  <li>Exponential time</li>
+</ul>
 
+<p>
+  It is important to analyze algorithms so that the best one, as defined above,
+  is adopted for a task.
+</p>

@@ -1,10 +1,9 @@
 package data_structures_and_algorithms.java.stack;
 
-public interface MyStack<T> {
+public interface stack<T> {
     boolean isEmpty();
     boolean isFull();
     void Push(T e);
-    void Pop();
-    T Top();
-    void showData();
+    T Pop(); // remove and return the element at the top
+    T Top(); // peek
 }
