@@ -85,6 +85,7 @@ class SortingAlgorithms {
     }
 
     public static int[] mergeSort(int[] list, int left, int right) {
+        // allocate additional space for this algorithm to run
         if (left < right) {
             int mid = (left + right) / 2;
             mergeSort(list, left, mid);
@@ -119,15 +120,11 @@ class SortingAlgorithms {
         }
 
         while (i < n1) {
-            list[k] = L[i];
-            i++;
-            k++;
+            list[k++] = L[i++];
         }
 
         while (j < n2) {
-            list[k] = R[j];
-            j++;
-            k++;
+            list[k++] = R[j++];
         }
     }
 }
