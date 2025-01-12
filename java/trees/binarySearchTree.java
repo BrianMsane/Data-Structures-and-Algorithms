@@ -39,10 +39,16 @@ class binarySearchTree {
 
     public Node root;
     public binarySearchTree(){ this.root = null;}
+    public binarySearchTree(int element){
+        Node newNode = new Node(element);
+        this.root = newNode;
+    }
+
     public boolean isEmpty(){ return this.root == null; }
     public boolean isLeaf(Node node){ return (node.leftChild == null && node.rightChild == null);}
 
     public void traverse(Node root){
+        // in-order traversal
         this.traverse(root.leftChild);
         System.out.println(this.root.data);
         this.traverse(root.rightChild);
@@ -50,7 +56,7 @@ class binarySearchTree {
 
     public Node find(int e){
         if (this.isEmpty())
-            return -1;
+            return null;
         else {
             if (this.root.data == e){
                 return this.root;
