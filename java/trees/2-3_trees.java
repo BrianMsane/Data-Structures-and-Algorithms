@@ -1,7 +1,15 @@
-class NodeFor2_3Tree<T> {
+class Node<T> {
     T firstData;
     T secondData;
-    NodeFor2_3Tree middlePointer;
-    NodeFor2_3Tree leftPointer;
-    NodeFor2_3Tree rightPointer;
+    Node middlePointer;
+    Node leftPointer;
+    Node rightPointer;
+
+    public Node(T first, T second){
+        this.firstData = first;
+        this.secondData = second;
+    }
+    public Node(T first){
+        this.firstData = first;
+    }
 }
