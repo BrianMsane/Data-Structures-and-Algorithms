@@ -2,15 +2,15 @@
 #include "Node.h"
 #include "Utils.h"
 
-
+template <class T>
 class LinkedList {
     private:
-        Node head;
+        Node<T> head;
 
     public:
         LinkedList(){ head = nullptr;}
         bool isFull(){ return false;}
-        bool isEmpty{ return (head == nullptr);}
+        bool isEmpty{ return head == nullptr;}
 
         void traversal(){
             Node current = head;
@@ -34,7 +34,7 @@ class LinkedList {
 
         void insertAfterElement(T element, T given){
             // inserts after a given value
-            newNode = new Node(element);
+            Node newNode = new Node(element);
             if (isEmpty){
                 return;
             } else {
@@ -48,7 +48,6 @@ class LinkedList {
                     current = current.link;
                 }
             }
-
         }
 
         void insertEnd(T element){
@@ -63,7 +62,40 @@ class LinkedList {
                 }
             }
         }
+
+        void sort(){
+            // sort elements of a linked list
+        }
+
+        int search(T element){
+            if (!isEmpty()){
+                Node current = head;
+                int index = 0;
+                while(current != nullptr){
+                    if (current.data == element){
+                        return index;
+                    }
+                    index++;
+                }
+            }
+        }
+
+        T access(int index){
+            current = head;
+            int currentIndex = 0;
+            while(current != null){
+               currentIndex += 1;
+               if (index == currentIndex) {
+                    return current.data;
+               }
+            }
+        }
+
+        void contat(LinkedList other){
+
+        }
 }
+
 
 
 template <class T>
@@ -95,11 +127,23 @@ class ArrayList{
         }
 
         void insertFirst(T element){
-
+            if (!isFull()){
+                array[size] = element;
+                swapList(array,  array[0], array[size])
+            }
         }
 
-        void insertAfterElement(){
-
+        void insertAfterElement(T element, T after){
+            int index = 0;
+            while (index < size){
+                if (array[index] == after){
+                    array[index + 1] = element;
+                    // shift the elements
+                    for (int i = index; index + 1 < size; index++){
+                        array[i + 1] = array[i];
+                    }
+                }
+            }
         }
 
 }
