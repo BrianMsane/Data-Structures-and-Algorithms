@@ -7,12 +7,7 @@ class Node {
 
     public:
     // constructor overloading
-        Node(T data){
-            data = data;
-            link = nullptr;
-        }
-        Node(T data, Node next){
-            data = data;
-            link = next;
-        }
-}
+        Node(Type data) : data(data), link(nullptr) {}
+        Node() : data(nullptr), link(nullptr) {}
+        Node(T data, Node next): data(data), link(next) {}
+};

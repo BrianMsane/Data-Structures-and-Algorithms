@@ -52,8 +52,8 @@ class LinkedList {
 
         void insertEnd(T element){
             // inserts at the end of the node
-            newNode = new Node(element);
-            current = head;
+            Node newNode = new Node(element);
+            Node current = head;
             while(current != nullptr){
                 if (current.link == nullptr){
                     current.link = newNode;
@@ -94,7 +94,7 @@ class LinkedList {
         void contat(LinkedList other){
 
         }
-}
+};
 
 
 
@@ -146,4 +146,4 @@ class ArrayList{
             }
         }
 
-}
+};

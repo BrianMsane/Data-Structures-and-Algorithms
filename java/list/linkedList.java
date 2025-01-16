@@ -1,7 +1,7 @@
 package data_structures_and_algorithms.java.list;
 
 
-public class linkedList<T> implements Innerlist<T> {
+public class linkedList implements listTemplate<T> {
 
     // to get access to private attributes, it should be inside the class of interest
     public class Node<T> {

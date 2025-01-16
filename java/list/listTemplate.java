@@ -1,4 +1,4 @@
-public interface Innerlist<T> {
+public interface listTemplate<T> {
     void insert(T element);
     void delete(T element);
     int length();
