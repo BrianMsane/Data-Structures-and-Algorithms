@@ -32,7 +32,7 @@ public class MyArrayList<T> implements Innerlist{
         Insert(current);
     }
 
-    public int find(element){
+    public int find(T element){
         // traverse the list and find the element matching the given element,
         // return its index position
         if (!(this.isEmpty())) {
@@ -48,54 +48,54 @@ public class MyArrayList<T> implements Innerlist{
         return -1;
     }
 
-    public T access(index){
+    public T access(int index){
         return (this.Items[index]);
     }
 
-    public void Insert(T e) {
+    public void insert(T e) {
         // insert at the next available index if the array is not yet full
         if (!(this.isFull())){
             this.Items[this.size++] = e; // post increment operator :D
         }
     }
 
-    public void Delete(T element) {
+    public void delete(T element) {
         if (!(this.isEmpty())){
             int index = 0;
             while (index < this.size){
                 if (this.Items[index] == element){
                     swap(index, this.size -1);
                     this.size--;
-                } else{
+                } else {
                     index++;
                 }
+        }
         }
     }
 
     public void showData() {
         for (int index =0; index < this.size; index++){
-            System.out.print('\t' + this.Items[index]);
-        }
-        System.out.println();
+            System.out.println(this.Items[index]);
         }
     }
+}
 
-    public class UOListDemoApp {
+public class UOListDemoApp {
     public static void main(String[] args) {
-        MyArrayList L<String> = new MyArrayList(); 
-        L.Insert ("musa"); 
-        L.Insert ("Lucky"); 
-        L.Insert ("jane"); 
-        L.ShowData (); 
-        L.Delete("Lucky"); 
-        L.ShowData (); 
-        L.Delete ("musa"); 
-        L.ShowData (); 
+        var L<String> = new MyArrayList(); 
+        L.insert ("musa"); 
+        L.insert ("Lucky"); 
+        L.insert ("jane"); 
+        L.showData (); 
+        L.delete("Lucky"); 
+        L.showData (); 
+        L.delete ("musa"); 
+        L.showData (); 
 
         var list = new MyArrayList(); // let java detect the type, and we can store any data type
         list.Insert(8);
         list.Insert("Bruno Fenarndes");
-        if list.isEmpty()
+        if (list.isEmpty())
             list.Insert("Maguire");
         list.delete(8);
         list.showData();

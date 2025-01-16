@@ -1,12 +1,10 @@
-package data_structures_and_algorithms.java.list;
-
 public interface Innerlist<T> {
-    void Insert(T element);
-    void Delete(T element);
+    void insert(T element);
+    void delete(T element);
     int length();
-    T access(index);
-    int find(element);
-    void showData();
+    T access(int index);
+    int find(T element); // return the index
+    void showData(); // traverse and print each element
     boolean isEmpty();
     boolean isFull();
 }

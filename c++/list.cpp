@@ -1,129 +1,105 @@
-
-template <class M>
-class ArrayList{
-    public:
-        int maxSize, size;
-        M array[maxSize];
-
-    ArrayList(ArrayList &a){
-        maxSize = a.maxSize;
-        size = a.size;
-        array = a.array;
-    }
-}
-
-template <class M>
-struct nodeType {
-    M info;
-    nodeType<M>* link;
-};
+#include <iostream>
+#include "Node.h"
+#include "Utils.h"
 
 
-template <class M>
 class LinkedList {
-private:
-    nodeType<M>* head;
+    private:
+        Node head;
 
-public:
-    LinkedList() : head(nullptr) {}
+    public:
+        LinkedList(){ head = nullptr;}
+        bool isFull(){ return false;}
+        bool isEmpty{ return (head == nullptr);}
 
-    void insert(const M& item) {
-        nodeType<M>* newNode = new nodeType<M>;
-        newNode->info = item;
-        newNode->link = head;
-        head = newNode;
-    }
-
-    bool deleteItem(const M& item) {
-        nodeType<M>* current = head;
-        nodeType<M>* previous = nullptr;
-
-        while (current != nullptr && current->info != item) {
-            previous = current;
-            current = current->link;
+        void traversal(){
+            Node current = head;
+            while(current != nullptr){
+                std::cout << current.data;
+                current = current.link;
+            }
+            std::cout << std::endl;
         }
 
-        if (current == nullptr) {
-            return false;
+        void insert(T element){
+            // inserts at the first node
+            newNode = new Node(element);
+            if (isEmpty){
+                head = newNode;
+            } else {
+                newNode.link = head.link;
+                head = newNode;
+            }
         }
 
-        if (previous == nullptr) {
-            head = head->link;
-        } else {
-            previous->link = current->link;
-        }
-
-        delete current;
-        return true;
-    }
-
-    void sort() {
-        if (head == nullptr || head->link == nullptr) {
-            return;
-        }
-
-        bool swapped;
-        do {
-            swapped = false;
-            nodeType<M>* current = head;
-            nodeType<M>* previous = nullptr;
-            nodeType<M>* next = head->link;
-
-            while (next != nullptr) {
-                if (current->info > next->info) {
-                    swapped = true;
-                    if (previous == nullptr) {
-                        head = next;
-                    } else {
-                        previous->link = next;
+        void insertAfterElement(T element, T given){
+            // inserts after a given value
+            newNode = new Node(element);
+            if (isEmpty){
+                return;
+            } else {
+                current = head;
+                while(head != nullptr){
+                    if (current.data == given){
+                        nextAfterCurrent = current.link;
+                        current.link = newNode;
+                        newNode.link = nextAfterCurrent;
                     }
-                    current->link = next->link;
-                    next->link = current;
-
-                    previous = next;
-                    next = current->link;
-                } else {
-                    previous = current;
-                    current = next;
-                    next = next->link;
+                    current = current.link;
                 }
             }
-        } while (swapped);
-    }
 
-    void display() const {
-        nodeType<M>* current = head;
-        while (current != nullptr) {
-            std::cout << current->info << " ";
-            current = current->link;
         }
-        std::cout << std::endl;
-    }
 
-    ~LinkedList() {
-        nodeType<M>* current = head;
-        while (current != nullptr) {
-            nodeType<M>* next = current->link;
-            delete current;
-            current = next;
+        void insertEnd(T element){
+            // inserts at the end of the node
+            newNode = new Node(element);
+            current = head;
+            while(current != nullptr){
+                if (current.link == nullptr){
+                    current.link = newNode;
+                } else {
+                    current = current.link;
+                }
+            }
         }
-    }
-};
+}
 
-// int main() {
-//     ArrayList<int> arrayList;
-//     arrayList.insert(3);
-//     arrayList.insert(1);
-//     arrayList.insert(2);
-//     arrayList.sort();
-//     arrayList.display(); // Output: 1 2 3
 
-//     LinkedList<int> linkedList;
-//     linkedList.insert(3);
-//     linkedList.insert(1);
-//     linkedList.insert(2);
-//     linkedList.sort();
-//     linkedList.display(); // Output: 1 2 3
+template <class T>
+class ArrayList{
+    private:
+        int maxSize = 15;
+        int size = 0;
+        int array[maxSize];
+    public:
+        ArrayList(){}
 
-//     return 0;
-// }
+        bool isFull(){ return size == maxSize;}
+        bool isEmpty(){ return size == 0;}
+
+        void traversal(){
+            int index = 0;
+            while (index < size){
+                std::cout << array[index];
+                index++;
+            }
+            std::cout << std::endl;
+        }
+
+        void insert(T element){
+            // inserts at next available position
+            if(!isFull()){
+                array[size] = element;
+            }
+        }
+
+        void insertFirst(T element){
+
+        }
+
+        void insertAfterElement(){
+
+        }
+
+}

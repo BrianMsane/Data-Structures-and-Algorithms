@@ -1,5 +1,4 @@
-// implement some sorting algorithms available in lierature
-
+# include "Utils.h"
 
 template<class elemType>
 int minLocation(elemType list[], int first, int last){
@@ -10,15 +9,6 @@ int minLocation(elemType list[], int first, int last){
             minIndex = loc
     }
     return minIndex
-}
-
-
-template <class elemType>
-void swap(elemType list[], int first, int second){
-    elemType temp;
-    temp = list[first];
-    list[first] = list[second];
-    list[second] = temp;
 }
 
 
@@ -41,10 +31,11 @@ void selectionSort(elemType list[], int lenght){
     int minIndex;
     for (int loc =0; loc < length; loc++){
         minIndex = minLocation(list, loc, length -1);
-        swap(list, loc, index);
+        swapList(list, loc, index);
     }
     
 }
+
 
 template <class elemType>
 void insertionSort(elemType list[], int length){
