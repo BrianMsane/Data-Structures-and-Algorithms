@@ -3,7 +3,7 @@
 * To Dequeue use this formula to get the new front (front = (front + 1) % capacity)
 * */
 
-public class circularArrayQueue<T> implements MyQuceue<T> {
+public class circularArrayQueue<T> implements MyQueue<T> {
 
     private static int maxSize = 10;
     private int [] Items;

@@ -5,11 +5,12 @@
 template <class T>
 class LinkedList {
     private:
-        Node<T> head;
+        Node<T>* head;
 
     public:
-        LinkedList(){ head = nullptr;}
-        bool isFull(){ return false;}
+        LinkedList(): head(nullptr) {}
+
+        bool isFull(){ return false; s}
         bool isEmpty{ return head == nullptr;}
 
         void traversal(){

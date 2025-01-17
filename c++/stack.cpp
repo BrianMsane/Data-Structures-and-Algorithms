@@ -19,26 +19,31 @@ class ArrayStack{
         int size;
 
     public:
-        ArrayStack(){ size = 0; }
-        bool isFull(){ return this == MAXSIZE; }
-        bool isEmpty(){ return size == 0; }
+        ArrayStack(): size(0) {}
+
+        bool isFull(){ return this->size == MAXSIZE; }
+        bool isEmpty(){ return this->size == 0; }
 
         void push(Type element){
             if(!isFull()){
-                array[size++] = element;
+                this->array[this->size++] = element;
             }
         }
 
         void pop(){
-            if(!isEmpty()){
-                delete array[size--];
-            }
+            if(!isEmpty()) this->size--;
         }
 
         Type top(){
-            if(!isEmpty()){
-                return array[size];
+            if(!isEmpty()) return this->array[this->size - 1];
+        }
+
+        void showData(){
+            int index = 0;
+            while(index < this->size){
+                std::cout << this->array[index];
             }
+            std::endl;
         }
 };
 
@@ -46,31 +51,41 @@ class ArrayStack{
 template <class Type>
 class LinkedStack{
     private:
-        Node top;
+         Node<Type>* top;
     
     public:
-        LinkedStack(){ top=nullptr; }
+        LinkedStack(): this->top(nullptr) {}
 
-        bool isEmpty(){ return top == nullptr; }
+        bool isEmpty(){ return this->top == nullptr; }
         bool isFull(){ return false; }
 
         void push(Type element){
-            Node newNode = new Node(element);
+            Node<Type>* newNode = new Node<Type>(element);
             if(isEmpty()){
-                top = newNode;
+                this->top = newNode;
             } else {
-                newNode.link = top.link;
-                top = newNode;
+                newNode->link = this->top.link;
+                this->top = newNode;
             }
         }
 
         void pop(){
             if(!isEmpty()){
-                top = top.link.link;
+                this->top = this->top.link.link;
             }
         }
 
         Type top(){
-            return top.data;
+            return this->top.data;
+        }
+
+        void showData(){
+            if(!isEmpty()){
+                Node<Type>* current = this->top;
+                while(current != nullptr){
+                    std::cout << current->data;
+                }
+                std::endl;
+            }
         }
 };
