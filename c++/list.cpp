@@ -106,7 +106,7 @@ class ArrayList{
         int size = 0;
         int array[maxSize];
     public:
-        ArrayList(){}
+        ArrayList(int maxSize): size(0), maxSize(maxSizes) {}
 
         bool isFull(){ return size == maxSize;}
         bool isEmpty(){ return size == 0;}

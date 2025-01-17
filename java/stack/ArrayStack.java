@@ -1,20 +1,13 @@
-package data_structures_and_algorithms.java.stack;
 
-public class myArrayStack<T> implements stack<T> {
+public class ArrayStack<T> implements StackInterface<T> {
     
     private int maxSize = 15;
     private int size;
     private T[] Items;
 
     // constructor overloading
-    void MyStack(){
+    public ArrayStack(){
         this.size = 0;
-        this.Items = T[] new Object[maxsize];
-    }
-    void MyStack(int initialSize){
-        this.maxSize = initialSize;
-        this.size = 0;
-        this.Items = (T[]) new Object[initialSize];
     }
 
     public boolean isEmpty(){return this.size == 0;}
@@ -26,9 +19,7 @@ public class myArrayStack<T> implements stack<T> {
 
     public void Pop(){
         if (!(isEmpty())){
-            T top = this.Items[--this.size]; // pre-decrement operator :D
             this.size--;
-            return top;
         }
     }
 
@@ -46,17 +37,5 @@ public class myArrayStack<T> implements stack<T> {
             }
         }
         System.out.println();
-    }
-
-
-public class Demo{
-    public static void main(String [] args){
-        MyStack S<Integer> = new myArrayStack();
-        if (S.isEmpty())
-            System.out.println("The stack is empty initially!");
-        S.Push(8);
-        S.Push(10);
-        S.showData();
-        S.isFull();
     }
 }
