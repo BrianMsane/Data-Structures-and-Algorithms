@@ -1,76 +1,74 @@
-package data_structures_and_algorithms.java.sort;
-
-class SortingAlgorithms {
+class Sort {
 
     public static void main(String[] args) {
         int list[] = {77, 8, 9, 3, 0, 3, 1};
         mergeSort(list, 0, list.length - 1);
         quickSort(list, 0, list.length - 1);
         bubbleSort(list);
-        insertionSort(list);
-        selectionSort(list);
-        System.out.println(java.util.Arrays.toString(list));
-    }
-
-    private static void swap(int i, int j, int[] list){
-        var temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
-    }
-
-    public static int[] quickSort(int[] list, int low, int high) {
-        if (low < high) {
-            int pi = partition(list, low, high);
-            quickSort(list, low, pi - 1);
-            quickSort(list, pi + 1, high);
-        }
-    }
-
-    private static int partition(int[] list, int low, int high) {
-        int pivot = list[high];
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (list[j] <= pivot) {
-                i++;
-                int temp = list[i];
+                insertionSort(list);
+                selectionSort(list);
+                System.out.println(java.util.Arrays.toString(list));
+            }
+        
+            private static void swap(int i, int j, int[] list){
+                var temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
             }
-        }
-        int temp = list[i + 1];
-        list[i + 1] = list[high];
-        list[high] = temp;
-        return i + 1;
-    }
-
-    public static int[] selectionSort(int[] list) {
-        for (int i = 0; i < list.length - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < list.length; j++) {
-                if (list[j] <= list[minIndex]) {
-                    minIndex = j;
+        
+            public static void quickSort(int[] list, int low, int high) {
+                if (low < high) {
+                    int pi = partition(list, low, high);
+                    quickSort(list, low, pi - 1);
+                    quickSort(list, pi + 1, high);
                 }
             }
-            swap(minIndex, i, list);
-        }
-        return list;
-    }
-
-    public static int[] insertionSort(int[] list) {
-        for (int i = 1; i < list.length; i++) {
-            int current = list[i];
-            int j = i - 1;
-            while (j >= 0 && list[j] > current) {
-                // shifting algorithm
-                list[j + 1] = list[j];
-                j--;
+        
+            private static int partition(int[] list, int low, int high) {
+                int pivot = list[high];
+                int i = (low - 1);
+                for (int j = low; j < high; j++) {
+                    if (list[j] <= pivot) {
+                        i++;
+                        int temp = list[i];
+                        list[i] = list[j];
+                        list[j] = temp;
+                    }
+                }
+                int temp = list[i + 1];
+                list[i + 1] = list[high];
+                list[high] = temp;
+                return i + 1;
             }
-            list[j + 1] = current;
-        }
-    }
-
-    public int[] bubbleSort(int[] list) {
-        boolean isSorted;
+        
+            public static int[] selectionSort(int[] list) {
+                for (int i = 0; i < list.length - 1; i++) {
+                    int minIndex = i;
+                    for (int j = i + 1; j < list.length; j++) {
+                        if (list[j] <= list[minIndex]) {
+                            minIndex = j;
+                        }
+                    }
+                    swap(minIndex, i, list);
+                }
+                return list;
+            }
+        
+            public static void insertionSort(int[] list) {
+                for (int i = 1; i < list.length; i++) {
+                    int current = list[i];
+                    int j = i - 1;
+                    while (j >= 0 && list[j] > current) {
+                        // shifting algorithm
+                        list[j + 1] = list[j];
+                        j--;
+                    }
+                    list[j + 1] = current;
+                }
+            }
+        
+            public static int[] bubbleSort(int[] list) {
+        boolean isSorted = false;
         for (int i = 0; i < list.length - 1; i++) {
             for (int j = 0; j < list.length - i; j++){
                 if (list[j] > list[j + 1]){
@@ -84,7 +82,7 @@ class SortingAlgorithms {
         return list;
     }
 
-    public static int[] mergeSort(int[] list, int left, int right) {
+    public static void mergeSort(int[] list, int left, int right) {
         // allocate additional space for this algorithm to run
         if (left < right) {
             int mid = (left + right) / 2;
@@ -94,7 +92,7 @@ class SortingAlgorithms {
         }
     }
 
-    private static int[] merge(int[] list, int left, int mid, int right) {
+    private static void merge(int[] list, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
