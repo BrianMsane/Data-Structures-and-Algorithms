@@ -17,14 +17,14 @@ One important thing about stacks is that the elements are stored and retrieved u
 
 The stack data structure is one of the most efficient data structures and the running times or most core operations is unit time and below you can see each with it big-oh complexity analysis assuming worst case scenario.
 
-| Operation | Running Time |
-| --------- | ------------ |
-| Stack()   | O(1)         |
-| Push(e)   | O(1)         |
-| Pop()     | O(1)         |
-| isEmpty() | O(1)         |
-| isFull()  | O(1)         |
-| Top()     | O(1)         |
+| Operation | Array Implementation | Linked Implementation |
+| --------- | -------------------- | --------------------- |
+| Stack()   | O(1)                 | O(1)                  |
+| Push(e)   | O(1)                 | O(1)                  |
+| Pop()     | O(1)                 | O(1)                  |
+| isEmpty() | O(1)                 | O(1)                  |
+| isFull()  | O(1)                 | O(1)                  |
+| Top()     | O(1)                 | O(1)                  |
 
 ## Stack Implementation
 
