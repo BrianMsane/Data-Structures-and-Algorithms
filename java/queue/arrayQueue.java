@@ -1,39 +1,38 @@
-package data_structures_and_algorithms.java.queue;
 
-public class arrayQueue<T> implements MyQueue<T> {
+public class ArrayQueue<T> implements QueueInterface<T> {
 
-    static int maxSize = 20;
-    static int frontIndex = 0;
+    private int maxSize = 20;
+    // private int frontIndex = 0;
     private int size;
-    private Item[];
+    private T [] Items;
 
-    void arrayQueue(){
-        this.size = 0;
-        this.Item = new T[maxSize];
-    }
-    public isEmpty(){return ((this.size == 0) && (frontIndex == 0));}
-    public isFull(){return (this.size == this.maxSize);}
+    public ArrayQueue(){ this.size = 0; }
+    public boolean isEmpty(){ return (this.size == 0); }
+    public boolean isFull(){ return (this.size == this.maxSize); }
 
-    public void enqueue(T e){
+    public void Enqueue(T element){
         if (!(this.isFull()))
-            this.Item[this.size] = e;
+            this.Items[this.size] = element;
     }
 
-    public void dequeue(){
+    public void Dequeue(){
         if (!(this.isEmpty())){
-            for (int i=1; i < this.size; i++){
-                this.Item[i-1] = this.Item[i];
+            for (int i = 1; i < this.size; i++){
+                this.Items[i - 1] = this.Items[i];
             }
             this.size--;
         }
     }
 
-    public T queueFront(){
-        if !(this.isEmpty())
-            return this.Item[frontIndex];
+    public T Front(){
+        if (!isEmpty())
+            return this.Items[0];
+        return null;
     }
 
-    public T queueRear(){
-
+    public T Rear(){
+        if(!isEmpty())
+            return this.Items[this.size -1];
+        return null;
     }
 }

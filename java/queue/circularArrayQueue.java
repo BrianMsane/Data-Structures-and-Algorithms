@@ -3,74 +3,57 @@
 * To Dequeue use this formula to get the new front (front = (front + 1) % capacity)
 * */
 
-public class circularArrayQueue<T> implements MyQueue<T> {
+public class CircularArrayQueue<T> implements QueueInterface<T> {
 
-    private static int maxSize = 10;
-    private int [] Items;
-    private int rear;
+    // private int maxSize = 10;
+    private T [] Items;
+    private int size;
+    private int capacity = 10;;
     private int front;
-    private int count;
 
-    public circularArrayQueue(){
+    public CircularArrayQueue(){
         this.front = -1; // points to no valid index initially
-        this.rear = -1;
-        this.count = 0;
-        this.Items = new T[maxSize];
+        this.size = 0;
     }
 
-    public boolean isEmpty(){ return (this.count ==0); }
-    public boolean isFull(){ return (this.count == this.maxSize); }
-    public int calucateRear(){ return ((front + count) % maxSize); }
-    public int calucateFront(){ return ((front + 1) % maxSize); }
+    public boolean isEmpty(){ return (this.size ==0); }
+    public boolean isFull(){ return (this.size == this.capacity); }
 
-    public void enqueue(T e){
+    // utility functions
+    public int calculateRearPosition(){ return ((this.front + this.size) % this.capacity); }
+    public int calculateFrontPosition(){ return ((this.front + 1) % this.capacity); }
+
+    public void Enqueue(T element){
         if(!(isFull())){
-            int index = calucateRear();
-            this.Items[index] = e;
-            this.count++;
+            int index = calculateRearPosition();
+            this.Items[index] = element;
+            this.size++;
         }
     }
 
-    public T dequeue(){
+    public void Dequeue(){
         if (isEmpty()){
             System.out.println("The queue is empty");
-            return;
         } else {
-            int index = calucateFront();
-            T dataValue = this.Items[index];
-            this.count--;
-
-            if (count == 1){
-                front = rear = -1;
+            if (this.size == 1){
+                this.front = this.size = -1;
             } else {
-                front--;
+                int frontIndex = calculateFrontPosition();
+                this.front = frontIndex;
             }
-            return  dataValue;
+            this.size--;
         }
     }
 
-    public T queueFront() {
-        if (!(isEmpty())){
-            return (this.Items[front]);
-        }
+    public T Front() {
+        if (!(isEmpty()))
+            return (this.Items[calculateFrontPosition()]);
+        return null;
     }
 
-    public T queueRear(){
-        if(!(isEmpty()){
-            return this.Items[rear];
-        }
-    }
-
-    public void ShowData () { 
-        if (isEmpty()) {
-            System.out.println("\nQueue is Empty");
-        } else {
-            if (this.front == this.rear){
-                System.out.println(this.Items[front]);
-            } else {
-                for (int i = front; i <= rear; i++)
-                    System.out.print(this.Items[i] +"\t");
-            }
-        }
+    public T Rear(){
+        if(!(isEmpty()))
+            return this.Items[calculateRearPosition()];
+        return null;
     }
 }
