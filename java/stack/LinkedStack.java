@@ -1,15 +1,15 @@
-package data_structures_and_algorithms.java.stack;
+// package data_structures_and_algorithms.java.stack;
 
 
 public class LinkedStack<T> implements StackInterface<T> {
 
-    public class Node<T> {
+    public class Node {
         private T data;
-        private Node<T> next;
+        private Node next;
     
         // constructor overloading
         public Node(){}
-        public Node (T data, Node<T> next){
+        public Node (T data, Node next){
             this.data = data;
             this.next = next;
         }
@@ -19,32 +19,34 @@ public class LinkedStack<T> implements StackInterface<T> {
         }
     }
 
-    Node<T> top;
-    
-    public  LinkedStack(){ top = null;}
-    public boolean isEmpty(){return (top == null);}
+    Node top;
+
+    public  LinkedStack(){ this.top = null;}
+    public boolean isEmpty(){return (this.top == null);}
     public boolean isFull(){return false;} // never full, theoretically
 
-    public void Push(T e){
-        Node<T> newNode = new Node<T>(e);
+    public void Push(T element){
+        Node newNode = new Node(element);
         if(isEmpty()){
-            top = newNode;
+            this.top = newNode;
         } else {
-            newNode = top;
-            top = newNode;
+            newNode.next = this.top;
+            this.top = newNode;
         }
     }
 
-    public void Pop(){
-        if (!(this.isEmpty()))
-            Node<T> top = this.top;
+    public T Pop(){
+        if (!(this.isEmpty())){
+            var currentTop = this.top;
             this.top = this.top.next;
-            return top;
+            return currentTop.data;
+        }
+        return null;
     }
 
     public void showData(){
         if(!(isEmpty())){
-            current = this.top;
+            var current = this.top;
             while (current != null){
                 System.out.println("\t" + current.data);
                 current = current.next;
@@ -52,8 +54,10 @@ public class LinkedStack<T> implements StackInterface<T> {
             System.out.println();
         }
     }
+
     public T Top(){
-        if(!(isEmpty()))
+        if(!isEmpty())
             return this.top.data;
+        return null;
     }
 }
