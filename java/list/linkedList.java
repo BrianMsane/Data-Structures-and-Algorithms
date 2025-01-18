@@ -1,10 +1,10 @@
-package data_structures_and_algorithms.java.list;
+// package data_structures_and_algorithms.java.list;
 
 
-public class linkedList implements listTemplate<T> {
+public class LinkedList<T> implements ListTemplate<T> {
 
     // to get access to private attributes, it should be inside the class of interest
-    public class Node<T> {
+    public class Node {
         private T data;
         private Node next;
 
@@ -20,67 +20,79 @@ public class linkedList implements listTemplate<T> {
     }
 
     private Node head;
-    private Node last;
 
-    public void linkedList(){
-        // constructor initializes the head and last nodes to null
-        this.head = this.last = null;
-    }
-
+    public void linkedList(){ this.head = null; }
     public boolean isEmpty() { return (this.head == null); }
     public boolean isFull(){ return false; } // never gets full, theoretically
 
-    public boolean find(T e){
+    public int Find(T e){
+        // implements sequential or linear search
+        // use a different node to traverse list so you cannot 
+        // lose the previous node each time you progress forward
+
         if (!isEmpty()){
-            current = head;
+            int count = 0;
+            Node current = this.head;
             while (current != null){
-                if(current.data = e){
-                    return true;
-                }
+                if(current.data == e)
+                    return count;
+                count += 1;
                 current = current.next;
             }
         }
-        return false;
+        return -1;
     }
 
-    public void insert(T element){
+    public void Insert(T element){
         Node newNode = new Node(element);
         if(isEmpty()){
-            this.head = this.tail = newNode;
+            this.head =  newNode;
         } else {
             newNode.next = this.head;
-            head = newNode;
+            this.head = newNode;
         }
     }
 
-    public int indexOf(T e){
-        int index = 0;
-        if (isEmpty()){
-            return -1;
-        } else {
-            current = head;
-            while (current != null){
-                if (current.data == e) return index;
-                index++;
-                current = current.next;
-            }
-        }
-    }
-
-    public void Delete(T e) {
-        var current = this.head;
+    public void Delete(T element) {
+        Node current = this.head;
         Node prevNode = null;
         while(current != null){
             prevNode = current;
+            if (current.data == element)
+                prevNode.next = current.next;
             current = current.next;
-            if (current.data == e) {
-                if (prevNode == null){
-                    head = current.next;
-                } else {
-                    prevNode.next = current.next;
-                }
+        }
+    }
+
+    public int Length(){
+        if (!isEmpty()){
+            int count = 0;
+            Node current = this.head;
+            while (current != null){
+                count++;
+                current = current.next;
+            }
+            return count;
+        }
+        return -1;
+    }
+
+    public T Access(int index){
+        int count = 0;
+        if(!isEmpty()){
+            Node current = this.head;
+            while(current != null){
+                if(count == index)
+                    return current.data;
+                count++;
+                current = current.next;
             }
         }
+        return null;
+    }
+
+    public void Sort(String listType){
+        // sorting elements or a linked list
     }
 
     public void showData() {
@@ -90,77 +102,5 @@ public class linkedList implements listTemplate<T> {
             currNode = currNode.next;
         }
         System.out.println();
-    }
-
-    public int length(){
-        // linked list traversal O(n)
-        int count = 0;
-        var current = head;
-        while (current != null){
-            count++;
-            current = current.next;
-        }
-        return count;
-    }
-
-    public void addFirst(T e){
-        // let this be the first element in the list
-        Node tempNode = new Node(e);
-        if(!(isEmpty())){
-            tempNode.next = this.head;
-            head = tempNode;
-        } else {
-            head = last = tempNode;
-        }
-    }
-
-    public void addLast(T e){
-        // add this element at the back of the list
-        // when keeping track of the last node, the operation takes O(1)
-        Node tempNode = new Node(e);
-        if (!(isEmpty())){
-            last.next = tempNode;
-            last = tempNode;
-        } else {
-            head = tempNode;
-        }
-    }
-
-    public void deleteLast(){
-        if (isEmpty()){
-            return -1;
-        } else {
-            current = head;
-            while (current != null){
-                previousNode = current;
-                current = current.next;
-                if(current.next == null){
-                    previousNode.next = null;
-                }
-            }
-        }
-    }
-
-    public void deleteFirst(){
-        if (isEmpty()){
-            return -1;
-        } else {
-            secondNode = head.next;
-            head = secondNode;
-        }
-    }
-}
-
-
-public class UOListDemoApp { 
-    public static void main(String[] args) { 
-        MyList L<String> = new linkedList();
-        L.Insert("brian");
-        L.Insert("msane");
-        L.Insert("kuhle"); 
-        L.ShowData(); 
-        L.Delete("kuhle");
-        L.Delete("brian");
-        L.ShowData();
     }
 }
