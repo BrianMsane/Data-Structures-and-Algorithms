@@ -5,4 +5,5 @@ public interface TreeInterface {
     boolean isLeaf();
     boolean Find(int element);
     void Traverse();
+    int HeightOfTree();
 }

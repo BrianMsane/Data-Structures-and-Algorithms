@@ -1,130 +1,134 @@
 import java.utils.Stack;
+import java.utils.Queue;
+import java.utils.Math;
+import java.utils.Max;
 
-class binarySearchTree {
+class BinarySearchTree {
 
     class Node {
         private int data;
         private Node leftChild;
         private Node rightChild;
 
-        public Node(int e){
-            // always insert a leaf node only
-            this.data = e;
+        public Node(){}
+        public Node(int data){
+            // always insert a leaf node
+            this.data = data;
             this.leftChild = null;
             this.rightChild = null;
         }
 
-        public void insert(int e){
-            if (e < this.data){
+        public void insert(int data){
+            // assumption is that we do not cater for duplication of data in the tree
+            if (data < this.data){
                 if (leftChild == null)
-                    leftChild = new Node(e);
+                    leftChild = new Node(data);
                 else
-                    leftChild.insert(e);
-            } else if (e > data) {
+                    leftChild.insert(data);
+            } else if (data > data) {
                 if (rightChild == null){
-                    rightChild = new Node(e);
+                    rightChild = new Node(data);
                 } else{
-                    rightChild.insert(e);
+                    rightChild.insert(data);
                 }
             }
         }
 
-        public int getData(){ return data; }
-        public Node getLeftChild(){ return leftChild; }
-        public Node getRightChild(){ return rightChild; }
-        public void setData(int e){ data = e;}
-        public void setLeftChild(Node left){ leftChild = left; }
-        public void setRightChild(Node right){ rightChild = right; }
+        public int getData(){ return this.data; }
+        public Node getLeftChild(){ return this.leftChild; }
+        public Node getRightChild(){ return this.rightChild; }
+        public void setData(int data){ this.data = data;}
+        public void setLeftChild(Node left){ this.leftChild = left; }
+        public void setRightChild(Node right){ this.rightChild = right; }
+        public boolean isLeaf(Node node){ return (node.leftChild == null && node.rightChild == null);}
     }
 
     public Node root;
-    public binarySearchTree(){ this.root = null;}
-    public binarySearchTree(int element){
+    public BinarySearchTree(){ this.root = null;}
+    public BinarySearchTree(int element){
         Node newNode = new Node(element);
         this.root = newNode;
     }
 
     public boolean isEmpty(){ return this.root == null; }
-    public boolean isLeaf(Node node){ return (node.leftChild == null && node.rightChild == null);}
+    public void Traverse(Node root){inOrder(root); }
 
-    public void traverse(Node root){
-        // in-order traversal
-        this.traverse(root.leftChild);
-        System.out.println(this.root.data);
-        this.traverse(root.rightChild);
+    public int HeightOfTree(Node root){
+        if(isEmpty())
+            return 0;
+        return (1+(Math.Max(HeightOfTree(root.leftChild) + HeightOfTree(root.rightChild))));
     }
 
-    public Node find(int e){
+    public Node Find(int element){
         if (this.isEmpty())
             return null;
         else {
-            if (this.root.data == e){
+            if (this.root.data == element){
                 return this.root;
             } else {
-                if (this.root.data > e){
-                    this.rightChild.find(e);
-                } else if (this.root.data < e) {
-                    this.leftChild.find(e);
+                if (this.root.data > element){
+                    root.rightChild.Find(element);
+                } else if (this.root.data < element) {
+                    root.leftChild.Find(element);
                 }
             }
         }
     }
 
-    public void insert(Node e){
-        if (e < this.data){
-            if (leftChild == null){
-                leftChild = new Node(e);
+    public void Insert(int element){
+        if (element < root.data){
+            if (root.leftChild == null){
+                root.leftChild = new Node(element);
             } else {
-                leftChild.insert(e);
+                root.leftChild.insert(element);
             }
-        } else if (e > this.data){
-            if (rightChild == null){
-                rightChild = new Node(e);
+        } else if (element > root.data){
+            if (root.rightChild == null){
+                root.rightChild = new Node(element);
             } else {
-                rightChild.insert(e)
+                root.rightChild.insert(element);
             }
         }
     }
 
-    public void delete(T e){
-        nodeE = this.find(e)
-        if (nodeE){
+    public void Delete(int element){
+        Node nodeE = this.Find(element);
+        if (nodeE != null){
             if (nodeE.isLeaf()){
                 nodeE = null;
             } else {
                 // find in order successor
                 // promote it to this parent
-                inOrderSuccessor = this.findInOrderSuccessor();
+                Node inOrderSuccessor = this.findInOrderSuccessor(nodeE);
                 nodeE.data  = inOrderSuccessor.data;
+                inOrderSuccessor = null;
             }
         }
     }
 
     public Node findInOrderSuccessor(Node e){
         // go right once and go left as far as you can
-        right = e.right;
-        while (right != null){
-            right  = right.leftChild;
-        }
-        return right;
-
-        // handle edge case
         // if there is no right, take the next left value
         if (e.rightChild == null){
             return e.leftChild;
+        } else {
+            Node right = e.rightChild;
+            while (right != null){
+                right  = right.leftChild;
+            }
+            return right;
         }
     }
 
     public int heightOfNode(Node node){
-        if (this.isLeaf()){
+        if (node.isLeaf())
             return 0;
-        } else {
-            return (1 + Math.max(heightOfNode(node.leftChild), heightOfNode(node.rightChild)));
-        }
+        return (1 + Math.max(heightOfNode(node.leftChild), heightOfNode(node.rightChild)));
     }
 
     public int depthOfNode(Node node){
         // same as the level of the node
+        return 0;
     }
 
 
@@ -138,8 +142,9 @@ class binarySearchTree {
         }
         inOrder(root.leftChild);
         System.out.println(root.data);
-        inOrder(root.rightChild)
+        inOrder(root.rightChild);
     }
+
     public void postOrder(Node root){
         // visit and process all nodes in the left subtree
         // visit and process all nodes in the right subtree
@@ -148,9 +153,10 @@ class binarySearchTree {
             return;
         }
         postOrder(root.leftChild);
-        postOrder(root.rightChild)
+        postOrder(root.rightChild);
         System.out.println(root.data);
     }
+
     public void preOrder(Node root){
         // visit and process the root node
         // visit and process all nodes in the left subtree
@@ -160,11 +166,12 @@ class binarySearchTree {
         }
         System.out.println(root.data);
         preOrder(root.leftChild);
-        preOrder(root.rightChild)
+        preOrder(root.rightChild);
     }
 
     public void iterativeInOrder(Node root){
-        var S = new Stack;
+        var S = new Stack();
+        //
     }
     public void iterativePostOrder(Node root){
         // inistialize two empty stacks
@@ -174,8 +181,8 @@ class binarySearchTree {
         // push left and right children of P to first stack
         // print the contents of the second stack
 
-        var firstStack = new Stack;
-        var secondStack = new Stack;
+        var firstStack = new Stack();
+        var secondStack = new Stack();
 
         firstStack.push(root);
         while (!firstStack.isEmpty()){
@@ -197,7 +204,7 @@ class binarySearchTree {
         // if P has a right child
         // for each node Y in teh left shell of the right child of P
         // push Y ont stack S
-        var S = new Stack;
+        var S = new Stack();
         S.push(this.root);
         while(!(S.isEmpty())){
             System.out.println(root.leftChild);
