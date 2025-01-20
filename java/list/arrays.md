@@ -1,7 +1,6 @@
 # Arrays
 
-An array is a homogenous collection - of the same type, of data values which
-are stored contiguously in memory.
+An array is a homogenous collection - of the same type, of data values which are stored contiguously in memory.
 
 ## Important concepts
 
@@ -17,27 +16,21 @@ are stored contiguously in memory.
 
 ## Operations
 
-Depending on the use case, you can define many other operations but the core
-operations on arrays include the following.
+Depending on the use case, you can define many other operations but the core operations on arrays include the following.
 
-<ul>
-  <li>Insert(element) > O(1)</li>
-  <li>Delete(element) > O(n)</li>
-  <li>Traverse() > O(n)</li>
-  <li>Sort(ascending | descending) > O(n)</li>
-  <li>Search(element) > O(n)</li>
-</ul>
+- Insert(element) > O(1)
+- Delete(element) > O(n)
+- Traverse() > O(n)
+- Sort(ascending | descending) > O(n)
+- Search(element) > O(n)
 
 ## Memory Allocation for Elements
 
-Array values are assigned to consecutive memory in memory, starting from a
-base address, b. The size of the data type is mainly used to determine the
-number of bytes the values are going to require. For instance, integers
-require four bytes and this can be determined using the
-<strong>sizeof()</strong> operator in C++
+Array values are assigned to consecutive memory in memory, starting from a base address, b. The size of the data type is mainly used to determine the number of bytes the values are going to require. For instance, integers require four bytes and this can be determined using the sizeof() operator in C++.
 
-For example if we have an array, one-dimensional, of size four and a base
-address of 500. The values are then stored in 500, 504, 508, 512.
+For example if we have an array, one-dimensional, of size four and a base address of 500. The values are then stored in 500, 504, 508, 512.
+
+## Array Mapping Function
 
 The array mapping function, AMF, can be used to return the memory address of a
 value at a given index position in an array given the index itself, and the
