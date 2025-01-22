@@ -167,13 +167,57 @@ If P has children<br>
 Enqueue the children of P from the left to right<br>
 End
 
+## 2-3 Tree
+
+A 2-3 tree is a perfect tree with the following properties.
+
+- All leaf nodes have the same depth and contains one or two data values
+- All non-leaf nodes have 2 or 3 children
+
+All the operations of a tree applies to this variety of tree and we just have to put an emphasis on the running times.
+
+| Operation       | Running Time |
+| --------------- | ------------ |
+| Create(T)       | O(1)         |
+| isEmpty()       | O(1)         |
+| Insert(element) | O(log2 m)    |
+| Delete(element) | O(log2 m)    |
+| Find(element)   | O(log2 m)    |
+| Traverse()      | O(n)         |
+
+log2 m is read as log base 2 of m
+
+To implement this kind of a tree you need a node that is a bit differet as it stores 2 data values, which can be said to be first and second data values, and three pointers to its children which are also of type Node which is the class being defined. Also, the algorithm for implementing these operations differ from those of other tree types as per the conditions or properties specific to 2-3 trees.
+
+The pseudocode for inserting into a 2-3 tree can be written as follows.
+
+Begin<br>
+If the tree is empty then<br>
+Begin<br>
+Create a new node Temp<br>
+Set e as the first data value of Temp<br>
+Make the root of the tree to point to Temp<br>
+End<br>
+Else<br>
+Find the leaf node P where we should insert e<br>
+If the P is not full(it contains only one data value), then insert e and maintain the order.<br>
+Else<br>
+If P is full(contains two data values)<br>
+Begin<br>
+
+1. Create a new node Temp as a sibling of P
+2. Set the largest value of the list {1st of P, 2nd of P, and e} as the first data value of Temp.
+3. Push the middle value of the list to the parent of P. If P has no parent create a new node and put the middle value as its first middle value. If the parent of P is not full then insert the middle value and maintain the order. If the parent of P is full then redo step 1,2, and 3.
+
+End<br>
+End<br>
+End<br>
+
 ## B-Tree
 
 ## B+Tree
 
 ## (a,b)-Tree
-
-## 2-3 Tree
 
 ## Note
 
