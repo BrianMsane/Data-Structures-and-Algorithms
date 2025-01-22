@@ -31,14 +31,13 @@ For example if we have an array, one-dimensional, of size four and a base addres
 
 The array mapping function, AMF, can be used to return the memory address of a value at a given index position in an array given the index itself, and the base address. Let A[lo..hi] be a 1-DIM array. The AMF can be denoted as follows:
 
-<strong>Addr(A[i]) = b + (i - lo) \* E.size</strong>.
+**Addr(A[i]) = b + (i - lo) \* E.size**
 
 This simply means that the address of the element at index position i is the sum of the base address and all the memory allocated before the ith element.
 
 For two-dimensional arrays the AMF can either assume row-major order or column-major order. When we use row-major order we allocate memory row by row and column-major order uses column-by-column to allocate memory. Assuming row-major order, the AMF can be expressed as follows.
 
-<strong
-    >Addr(A[i, j]) = b + (i - lo <sub>1</sub>)(hi <sub>2</sub> - lo
-<sub>2</sub> + 1) _ E.size + (j - lo <sub>2</sub>) _ E.size</strong>
+**Addr(A[i, j]) = b + (i - lo <sub>1</sub>)(hi <sub>2</sub> - lo
+<sub>2</sub> + 1) _ E.size + (j - lo <sub>2</sub>) _ E.size**
 
 On the contrary, assuming column-major order, the AMF can be expresses as follows.

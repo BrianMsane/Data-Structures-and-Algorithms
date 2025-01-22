@@ -41,6 +41,8 @@ class BinarySearchTree {
         public void setLeftChild(Node left){ this.leftChild = left; }
         public void setRightChild(Node right){ this.rightChild = right; }
         public boolean isLeaf(Node node){ return (node.leftChild == null && node.rightChild == null);}
+        public boolean emptyLeftSubtree(){return (node.leftChild == null && node.rightChild != null);}
+        public boolean emptyRightSubtree(){ return (node.leftChild != null && node.rightChild == null);}
     }
 
     public Node root;
@@ -60,22 +62,32 @@ class BinarySearchTree {
     }
 
     public Node Find(int element){
+        // recursive implementation of search algorithms(Easy :D)
+
+        // if we were to implement the iterative algorithm, we would have to use a loop
+            // current = this.root.
+            // while current != null
+                // if current.data == element; return true
+                // else if current.data < element; current = current.leftChild
+                // else if current.data > element; current = currentrightChild
+    
         if (this.isEmpty())
             return null;
         else {
             if (this.root.data == element){
                 return this.root;
+            } else if (this.root.data > element){
+                this.root.rightChild.Find(element);
             } else {
-                if (this.root.data > element){
-                    root.rightChild.Find(element);
-                } else if (this.root.data < element) {
-                    root.leftChild.Find(element);
-                }
+                root.leftChild.Find(element);
             }
         }
     }
 
     public void Insert(int element){
+        if(isEmpty())
+            this.root = new Node(element);
+
         if (element < root.data){
             if (root.leftChild == null){
                 root.leftChild = new Node(element);
@@ -92,10 +104,20 @@ class BinarySearchTree {
     }
 
     public void Delete(int element){
+        // handle edge cases
+            // 1. The node to be deleted is a leaf node
+            // 2. The node has only its left subtree nonempty and the right subtree is empty
+            // 3. Has right subtree nonempty but left subtree emtpy
+            // 4. Has both left and right subtree nonempty
+        
         Node nodeE = this.Find(element);
-        if (nodeE != null){
+        if (nodeE != null){ // it exists
             if (nodeE.isLeaf()){
                 nodeE = null;
+            } else if(nodeE.emptyRightSubtree()){
+
+            } else if(nodeE.emptyLeftSubtree()){
+
             } else {
                 // find in order successor
                 // promote it to this parent
