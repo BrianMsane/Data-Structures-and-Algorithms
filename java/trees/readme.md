@@ -213,10 +213,6 @@ End<br>
 End<br>
 End<br>
 
-## B-Tree
-
-## B+Tree
-
 ## (a,b)-Tree
 
 An a-b tree is a perfect tree with the following properties.
@@ -236,6 +232,40 @@ Operations are the same as those for a 2-3 tree and the running time are almost 
 | Traverse()      | O(n)         |
 
 loga m is read as log base a of m
+
+## B-Tree
+
+A B-Tree (balanced tree) of order b is an (a,b)-tree where b = 2a -1. The operations and running times of the operations are the same as those for an (a,b)-tree.
+
+Algorithm to insert into a B-Tree.
+
+Begin<br>
+If the tree T is empty then<br>
+Begin<br>
+Create a new node Temp
+Set element e to be the first data value of Temp
+Make T, the root, to point to Temp
+End
+Else {The tree is not empty}
+Begin<br>
+Find the leaf node P in which element e is to be inserted.
+If P is not full(contains less than b-1 values) then insert e into P and make sure to maintain the order.
+Else
+Begin<br>
+
+1. Create a new node Temp as sibling of P
+2. Let S be the list containing {all values of P U e}
+3. Insert into P the first a-1 values of S
+4. Insert into Temp the last a-1 value of S
+5. Move the middle data value of S into the parent of P. If the parent of P is not empty then insert e and maintain the order. If it is full then reapeat step 1 through 5. If P has no parent then create a new node(root) and make its first data value to be the middle vaue of S.
+
+End<br>
+End<br>
+End<br>
+
+## B+-Tree
+
+A B+-Tree is a B-Tree where all the leaf nodes are chained (for a linked list). We still maintain the same operations as those of a tree but different implementations because of the properties which govern this tree.
 
 ## Note
 
