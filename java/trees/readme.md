@@ -219,6 +219,26 @@ End<br>
 
 ## (a,b)-Tree
 
+An a-b tree is a perfect tree with the following properties.
+
+- All leaf nodes have the same height and contains between 1 and b-1 data values
+- All non-leaf nodes, except for the root, (internal nodes) as c children where is a value between a and b. a <= c <= b
+
+Operations are the same as those for a 2-3 tree and the running time are almost similay except for the fact that since a and b are not known, as oppossed to a 2-3 tree where a is 2 and b is 3, we use a instead of 2 in the logarithmic expression as shown below.
+
+| Operation       | Running Time |
+| --------------- | ------------ |
+| Create(T)       | O(1)         |
+| isEmpty()       | O(1)         |
+| Insert(element) | O(loga m)    |
+| Delete(element) | O(loga m)    |
+| Find(element)   | O(loga m)    |
+| Traverse()      | O(n)         |
+
+loga m is read as log base a of m
+
 ## Note
 
-The left shell of a node is the set of all nodes in the path from X to the leftmost node of the subtree rooted from X. It is inclusive of X.
+- The left shell of a node is the set of all nodes in the path from X to the leftmost node of the subtree rooted from X. It is inclusive of X.
+- A tree is perfect if it is a full tree and all leaf nodes have the same depth
+- A tree is full if all non-leaf nodes has exactly the same number of childer
