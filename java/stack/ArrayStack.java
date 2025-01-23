@@ -3,7 +3,7 @@ public class ArrayStack<T> implements StackInterface<T> {
     
     private int maxSize = 15;
     private int size;
-    private T[] Items[];
+    private T[] Items;
 
     // constructor overloading
     public ArrayStack(){ this.size = 0; }

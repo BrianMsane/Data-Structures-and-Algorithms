@@ -1,4 +1,4 @@
-public class AdjacecyMatrixGraph<Integer> implements mygraph<T> {
+public class AdjacecyMatrixGraph<T> implements mygraph<T> {
     private final int size;
     private int [][] adjacencyMatrix;
 

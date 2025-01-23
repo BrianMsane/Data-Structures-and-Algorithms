@@ -47,9 +47,26 @@ One of the most fundamental operations that can be performed on a graph is trave
 
 ### Breadth First Search
 
+The iterative implementation goes as follows:
+
+Begin\
+$~~~$ Enqueue Node v to Queue Q\
+$~~~$ Process and mark v as visited\
+$~~~$ While Q is not empty\
+$~~~~~~~$ Begin\
+$~~~~~~~$ Let w be the node in front of Q\
+$~~~~~~~$ Dequeue w from Q\
+$~~~~~~~$ For each unvisited node u adjacent to w\
+$~~~~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~~~$ Enqueue node u to Q\
+$~~~~~~~~~~~~~~~$ Process and mark node u as visited\
+$~~~~~~~~~~~$ End\
+$~~~~~~~$ End\
+End
+
 ### Depth First Search
 
-## Nodes
+## Notes
 
 **_Node v is adjacent to node u if there is an edge from u to v_**
 **_Node v is a neighbour of node u if it is adjacent to u_**
