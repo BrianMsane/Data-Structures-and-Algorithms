@@ -47,6 +47,18 @@ One of the most fundamental operations that can be performed on a graph is trave
 
 ### Breadth First Search
 
+The recursive implemanation goes as follows:
+
+Begin\
+$~~~$ Process and mark node v as visited\
+$~~~$ Let distance I equal to 1\
+$~~~$ While we have unvisited nodes\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~~$ Proces and mark all nodes at distance I from v\
+$~~~~~~~~~~~$ Increment node I by one\
+$~~~~~~~$ End\
+End
+
 The iterative implementation goes as follows:
 
 Begin\
@@ -54,19 +66,44 @@ $~~~$ Enqueue Node v to Queue Q\
 $~~~$ Process and mark v as visited\
 $~~~$ While Q is not empty\
 $~~~~~~~$ Begin\
-$~~~~~~~$ Let w be the node in front of Q\
-$~~~~~~~$ Dequeue w from Q\
-$~~~~~~~$ For each unvisited node u adjacent to w\
-$~~~~~~~~~~~$ Begin\
-$~~~~~~~~~~~~~~~$ Enqueue node u to Q\
-$~~~~~~~~~~~~~~~$ Process and mark node u as visited\
-$~~~~~~~~~~~$ End\
+$~~~~~~~~~~~$ Let w be the node in front of Q\
+$~~~~~~~~~~~$ Dequeue w from Q\
+$~~~~~~~~~~~$ For each unvisited node u adjacent to w\
+$~~~~~~~~~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~~~~~~~~$ Enqueue node u to Q\
+$~~~~~~~~~~~~~~~~~~~~$ Process and mark node u as visited\
+$~~~~~~~~~~~~~~~~$ End\
 $~~~~~~~$ End\
 End
 
 ### Depth First Search
 
+The recursive implemanation goes as follows:
+
+Begin\
+$~~~$ Process and mark node v (source node of traversal) as visited\
+$~~~$ For each unvisited node u adjacent to v, perform and DFS(u, G)\
+End
+
+The iterative implementation goes as follows:
+
+Begin\
+$~~~$ Push node v into Stack S\
+$~~~$ While S in not emtpy\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~~$ Let P be the node on the top of S\
+$~~~~~~~~~~~$ Pop node P if all its neighbours have been visited\
+$~~~~~~~~~~~$ Else\
+$~~~~~~~~~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~~~~~~~~$ Select node u from the set of unvisited neighbours of P\
+$~~~~~~~~~~~~~~~~~~~~$ Push u onto stack S\
+$~~~~~~~~~~~~~~~~$ End\
+$~~~~~~~$ End\
+End
+
 ## Notes
 
-**_Node v is adjacent to node u if there is an edge from u to v_**
-**_Node v is a neighbour of node u if it is adjacent to u_**
+- **_Node v is adjacent to node u if there is an edge from u to v_**
+- **_Node v is a neighbour of node u if it is adjacent to u_**
+- **_E is the set of all edges in graph G_**
+- **_V is the set of all nodes in graph G_**

@@ -2,7 +2,7 @@ public interface mygraph<T> {
     int getSize();
     public boolean isEmpty();
     public boolean isMember();
-    public int nodeIndex(T node):
+    public int nodeIndex(T node);
 
     public boolean isAdjacent();
     public void neighbours();

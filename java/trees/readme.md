@@ -76,95 +76,97 @@ These algorithms can practically be implemented using recurcive and iterative al
 
 #### Inorder traversal
 
-Begin <br>
-Visit and process all nodes in the left subtree of the root<br>
-Visit and process the root node<br>
-Visit and process in the right subtree of the root<br>
+Begin \
+$~~~~$ Visit and process all nodes in the left subtree of the root\
+$~~~~$ Visit and process the root node\
+$~~~~$ Visit and process in the right subtree of the root\
 End
 
 #### Preorder Traversal
 
-Begin<br>
-Visit and process the root node<br>
-Visit and process all nodes in the left subtree<br>
-Visit and process all nodes in the right subtree<br>
+Begin\
+$~~~~$ Visit and process the root node\
+$~~~~$ Visit and process all nodes in the left subtree\
+$~~~~$ Visit and process all nodes in the right subtree\
 End
 
 #### Postorder Traversal
 
-Begin<br>
-Visit and process all the nodes in the left subtree<br>
-Visit and process all the nodes in the right subtree<br>
-Visit and process the root node<br>
+Begin\
+$~~~~$ Visit and process all the nodes in the left subtree\
+$~~~~$ Visit and process all the nodes in the right subtree\
+$~~~~$ Visit and process the root node\
 End
 
 #### Level order Traversal
 
-Begin<br>
-For I = 1 to max level<br>
-Visit and process leve I nodes in the left to right order<br>
+Begin\
+$~~~~$ For I = 1 to max level\
+$~~~~~~~~~$ Visit and process leve I nodes in the left to right order\
 End
 
 ### Iterative Algorithms
 
 #### Inorder
 
-Begin<br>
-Initialize an empty stack S<br>
-For each node P on the left shell of the root node<br>
-Push P on the stack<br>
-While the stack is not emtpy<br>
-Begin<br>
-Pop and process U from the stack<br>
-If U has a right child then<br>
-Begin<br>
-For each node Y on the left shell of the right child of U<br>
-Push Y on to the stack<br>
-End<br>
-End<br>
+Begin\
+$~~~$ Initialize an empty stack S\
+$~~~$ For each node P on the left shell of the root node\
+$~~~$ Push P on the stack\
+$~~~$ While the stack is not emtpy\
+$~~~~~~$ Begin\
+$~~~~~~$ Pop and process U from the stack\
+$~~~~~~$ If U has a right child then\
+$~~~~~~~~~$ Begin\
+$~~~~~~~~~$ For each node Y on the left shell of the right child of U\
+$~~~~~~~~~$ Push Y on to the stack\
+$~~~~~~~~~$ End\
+$~~~~~~$ End\
 End
 
 #### Preorder
 
-Begin<br>
-For each node P in the left shell of the root<br>
-Begin<br>
-If node P has a right child Y then Push Y onto the stack<br>
-End<br>
+Begin\
+$~~~$ For each node P in the left shell of the root\
+$~~~~~~~$ Begin\
+$~~~~~~~$ If node P has a right child Y then Push Y onto the stack\
+$~~~~~~~$ End\
 
-While the stack is not emtpy<br>
-Begin<br>
-Let P be the node on top of the stack<br>
-Pop and process node P<br>
-For each node J in the left shell pf P do<br>
-Begin<br>
-If J has a right child Y then push Y onto the stack<br>
-End<br>
-End<br>
+While the stack is not emtpy\
+$~~~~$ Begin\
+$~~~~~~~$ Let P be the node on top of the stack\
+$~~~~~~~$ Pop and process node P\
+$~~~~~~$ For each node J in the left shell pf P do\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~$ If J has a right child Y then push Y onto the stack\
+$~~~~~~~$ End\
+$~~~~$ End\
 End
 
 #### Postorder
 
-Begin<br>
-Initialize two empty stacks, S1 and S2<br>
-Push the root node onto S1<br>
-While S1 is not empty<br>
-Begin<br>
-Pop node P from S1 and push it to S2<br>
-Push the left and right children P onto S1<br>
-End<br>
-Print all the content of S2<br>
+Begin\
+$~~~~$ Initialize two empty stacks, S1 and S2\
+$~~~~$ Push the root node onto S1\
+$~~~~$ While S1 is not empty\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~~$ Pop node P from S1 and push it to S2\
+$~~~~~~~~~~~$ Push the left and right children P onto S1\
+$~~~~~~~~~~~$ End\
+$~~~~$ Print all the content of S2\
 End
 
 #### Level order
 
-Begin<br>
-Enqueue the root node onto Queue Q<br>
-While Q is not empty<br>
-Dequeue node P in front of Q<br>
-Process and mark P as vistited<br>
-If P has children<br>
-Enqueue the children of P from the left to right<br>
+Begin\
+$~~~~$ Enqueue the root node onto Queue Q\
+$~~~~$ While Q is not empty\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~$ Dequeue node P in front of Q\
+$~~~~~~~~~~$ Process and mark P as vistited\
+$~~~~~~~~~~$ If P has children\
+$~~~~~~~~~~$ Enqueue the children of P from the left to right\
+$~~~~~~~$ End\
 End
 
 ## 2-3 Tree
@@ -191,27 +193,25 @@ To implement this kind of a tree you need a node that is a bit differet as it st
 
 The pseudocode for inserting into a 2-3 tree can be written as follows.
 
-Begin<br>
-If the tree is empty then<br>
-Begin<br>
-Create a new node Temp<br>
-Set e as the first data value of Temp<br>
-Make the root of the tree to point to Temp<br>
-End<br>
-Else<br>
-Find the leaf node P where we should insert e<br>
-If the P is not full(it contains only one data value), then insert e and maintain the order.<br>
-Else<br>
-If P is full(contains two data values)<br>
-Begin<br>
-
-1. Create a new node Temp as a sibling of P
-2. Set the largest value of the list {1st of P, 2nd of P, and e} as the first data value of Temp.
-3. Push the middle value of the list to the parent of P. If P has no parent create a new node and put the middle value as its first middle value. If the parent of P is not full then insert the middle value and maintain the order. If the parent of P is full then redo step 1,2, and 3.
-
-End<br>
-End<br>
-End<br>
+Begin\
+$~~~~$ If the tree is empty then\
+$~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~$ Create a new node Temp\
+$~~~~~~~~~~~~~$ Set e as the first data value of Temp\
+$~~~~~~~~~~~~~$ Make the root of the tree to point to Temp\
+$~~~~~~~~$ End\
+$~~~~$ Else\
+$~~~~~~~~$ Find the leaf node P where we should insert e\
+$~~~~~~~~$ If the P is not full(it contains only one data value), then insert e and maintain the order.\
+$~~~~~~~~$ Else\
+$~~~~~~~~~~~~$ If P is full(contains two data values)\
+$~~~~~~~~~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~~~~~~~~$ 1. Create a new node Temp as a sibling of P\
+$~~~~~~~~~~~~~~~~~~~~$ 2. Set the largest value of the list {1st of P, 2nd of P, and e} as the first data value of Temp.\
+$~~~~~~~~~~~~~~~~~~~~$ 3. Push the middle value of the list to the parent of P. If P has no parent create a new node and put the middle value as its first middle value. If the parent of P is not full then insert the middle value and maintain the order. If the parent of P is full then redo step 1,2, and 3.\
+$~~~~~~~~~~~~~~$ End\
+$~~~~~~~$ End\
+End
 
 ## (a,b)-Tree
 
@@ -239,29 +239,27 @@ A B-Tree (balanced tree) of order b is an (a,b)-tree where b = 2a -1. The operat
 
 Algorithm to insert into a B-Tree.
 
-Begin<br>
-If the tree T is empty then<br>
-Begin<br>
-Create a new node Temp
-Set element e to be the first data value of Temp
-Make T, the root, to point to Temp
+Begin\
+$~~~$ If the tree T is empty then\
+$~~~~~~~$ Begin\
+$~~~~~~~~~~$ Create a new node Temp\
+$~~~~~~~~~~$ Set element e to be the first data value of Temp\
+$~~~~~~~~~~$ Make T, the root, to point to Temp\
+$~~~~~~$ End\
+$~~~~$ Else {The tree is not empty}\
+$~~~~~~~~$ Begin\
+$~~~~~~~~~~~~$ Find the leaf node P in which element e is to be inserted.\
+$~~~~~~~~~~~~$ If P is not full(contains less than b-1 values) then insert e into P and make sure to maintain the order.\
+$~~~~~~~~$ Else\
+$~~~~~~~~~~~~~$ Begin\
+$~~~~~~~~~~~~~~~~~~$ 1. Create a new node Temp as sibling of P\
+$~~~~~~~~~~~~~~~~~~$ 2. Let S be the list containing {all values of P U e}\
+$~~~~~~~~~~~~~~~~~~$ 3. Insert into P the first a-1 values of S\
+$~~~~~~~~~~~~~~~~~~$ 4. Insert into Temp the last a-1 value of S\
+$~~~~~~~~~~~~~~~~~~$ 5. Move the middle data value of S into the parent of P. If the parent of P is not empty then insert e and maintain the order. If it is full then reapeat step 1 through 5. If P has no parent then create a new node(root) and make its first data value to be the middle vaue of S.\
+$~~~~~~~~~~~~~$ End\
+$~~~~~~~~~$ End\
 End
-Else {The tree is not empty}
-Begin<br>
-Find the leaf node P in which element e is to be inserted.
-If P is not full(contains less than b-1 values) then insert e into P and make sure to maintain the order.
-Else
-Begin<br>
-
-1. Create a new node Temp as sibling of P
-2. Let S be the list containing {all values of P U e}
-3. Insert into P the first a-1 values of S
-4. Insert into Temp the last a-1 value of S
-5. Move the middle data value of S into the parent of P. If the parent of P is not empty then insert e and maintain the order. If it is full then reapeat step 1 through 5. If P has no parent then create a new node(root) and make its first data value to be the middle vaue of S.
-
-End<br>
-End<br>
-End<br>
 
 ## B+-Tree
 
