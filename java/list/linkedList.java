@@ -103,4 +103,8 @@ public class LinkedList<T> implements ListTemplate<T> {
         }
         System.out.println();
     }
+    @Override
+    public void Sort() {
+        // add one sorting algorithm
+    }
 }

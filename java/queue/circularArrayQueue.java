@@ -5,23 +5,25 @@
 
 public class CircularArrayQueue<T> implements QueueInterface<T> {
 
-    // private int maxSize = 10;
+    private int maxSize = 10;
     private T [] Items;
     private int size;
-    private int capacity = 10;;
+    private int rear;;
     private int front;
 
     public CircularArrayQueue(){
         this.front = -1; // points to no valid index initially
+        this.rear = -1;
         this.size = 0;
+        this.Items = new T[maxSize];
     }
 
     public boolean isEmpty(){ return (this.size ==0); }
-    public boolean isFull(){ return (this.size == this.capacity); }
+    public boolean isFull(){ return (this.size == this.rear); }
 
     // utility functions
-    public int calculateRearPosition(){ return ((this.front + this.size) % this.capacity); }
-    public int calculateFrontPosition(){ return ((this.front + 1) % this.capacity); }
+    public int calculateRearPosition(){ return ((this.front + this.size) % this.maxSize); }
+    public int calculateFrontPosition(){ return ((this.front + 1) % this.maxSize); }
 
     public void Enqueue(T element){
         if(!(isFull())){
